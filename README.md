@@ -1,66 +1,43 @@
-## Foundry
+# 🌉 USDT Cross-Chain Bridge via Stargate
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This smart contract provides a simple interface to bridge **USDT** tokens to another chain using **LayerZero's Stargate protocol**. It supports fee estimation and token bridging from an EVM-compatible source chain (e.g., Ethereum, Arbitrum) to a destination chain (e.g., BSC).
 
-Foundry consists of:
+---
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## ⚙️ Features
 
-## Documentation
+- ✅ Send USDT to another chain via Stargate
+- ✅ Estimate required native gas fee using Stargate's LayerZero fee quoting
+- ✅ Built-in approval and token transfer logic
+- ✅ Configurable router and USDT token addresses
 
-https://book.getfoundry.sh/
+---
 
-## Usage
+## 🧱 Built With
 
-### Build
+- **Solidity `^0.8.0`**
+- **Stargate Router Interface**
+- Compatible with **LayerZero Protocol**
 
-```shell
-$ forge build
-```
+---
 
-### Test
+## 📁 Files
 
-```shell
-$ forge test
-```
+- `Bridge.sol`: Main smart contract for bridging
+- `Interface/IStargate.sol`: Stargate router interface definition (import required)
+- `script/DeployBridge.s.sol`: Forge deployment script
 
-### Format
+---
 
-```shell
-$ forge fmt
-```
+## 🔧 Deployment
 
-### Gas Snapshots
+### 🛠️ Using Foundry
 
-```shell
-$ forge snapshot
-```
+To deploy this contract on a network like Arbitrum using Foundry:
 
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+```bash
+forge script script/DeployBridge.s.sol:BridgeDeploy \
+  --rpc-url $ARBITRUM_RPC_URL \
+  --broadcast \
+  --verify \
+  -vvvv
